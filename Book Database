@@ -1,0 +1,24 @@
+CREATE TABLE books (id INTEGER PRIMARY KEY, title TEXT, section INTEGER, year INTEGER, price INTEGER);
+
+INSERT into books VALUES (1, "Quijote", 1, 1616, 10);
+INSERT into books VALUES (2, "AOIAF", 2, 1998, 60);
+INSERT into books VALUES (3, "Galapagos", 2, 1980,15);
+INSERT into books VALUES (4, "Kapital", 1, 1848, 40);
+INSERT into books VALUES (5, "Bible", 1, 1611, 10);
+INSERT into books VALUES (6, "Pride and Prejudice", 1, 1640, 30);
+Insert into books VALUES (7, "Poemario", 2, 1980, 35);
+INSERT into books VALUES (8, "Harry Potter", 3, 1999, 35);
+INSERT into books VALUES (9, "Hunger Games", 3, 1998, 40);
+INSERT into books VALUES (10, "Thus Spoke Sarathustra",1, 1890, 25);
+INSERT into books VALUES (11, "Red Mars" ,2, 1880, 40);
+INSERT into books VALUES (12, "Clifford", 4, 1963, 15);
+INSERT into books VALUES (13, "Whinnie Pooh", 4, 1926, 10);
+INSERT into books VALUES (14, "Paddington",4, 1985, 45);
+INSERT into books VALUES (15, "The Little Prince",4, 1943, 15);
+
+
+-- display database ordering books by price
+SELECT * FROM books ORDER BY price;
+
+-- how much does each section cost? order them
+SELECT section, SUM(price) from books GROUP BY section;
