@@ -19,8 +19,8 @@ INSERT into books VALUES (15, "The Little Prince",4, 1943, 15);
 -- section numbers correspond to the following division:
 1 - classics
 2 - modern works
-3 - Young adult novels
-4 - Kid's books
+3 - young adult novels
+4 - kids books
 
 -- display database ordering books by price
 SELECT * FROM books ORDER BY price;
@@ -28,3 +28,8 @@ SELECT * FROM books ORDER BY price;
 -- how much does each section cost? order them
 SELECT section, SUM(price) from books GROUP BY section;
 
+-- what's the oldest book on catalogue?
+SELECT title, MIN(year) from books;
+
+--what's the newest book on catalogue?
+SELECT title, MAX(year) from books;
