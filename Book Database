@@ -16,9 +16,15 @@ INSERT into books VALUES (13, "Whinnie Pooh", 4, 1926, 10);
 INSERT into books VALUES (14, "Paddington",4, 1985, 45);
 INSERT into books VALUES (15, "The Little Prince",4, 1943, 15);
 
+-- section numbers correspond to the following division:
+1 - classics
+2 - modern works
+3 - Young adult novels
+4 - Kid's books
 
 -- display database ordering books by price
 SELECT * FROM books ORDER BY price;
 
 -- how much does each section cost? order them
 SELECT section, SUM(price) from books GROUP BY section;
+
