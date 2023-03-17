@@ -3,7 +3,7 @@ CREATE TABLE books (id INTEGER PRIMARY KEY, title TEXT, section INTEGER, year IN
 INSERT into books VALUES (1, "Quijote",1, 1616, 10);
 INSERT into books VALUES (2, "AOIAF",2, 1998, 60);
 INSERT into books VALUES (3, "Galapagos",2, 1980,15);
-INSERT into books VALUES (4, "Metamorphosis",1, 1848, 40);
+INSERT into books VALUES (4, "Metamorphosis",1, 1915, 20);
 INSERT into books VALUES (5, "Bible",1, 1611, 10);
 INSERT into books VALUES (6, "Pride and Prejudice",1, 1640, 30);
 Insert into books VALUES (7, "Poemario",2, 1980, 35);
