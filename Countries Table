@@ -322,17 +322,20 @@ INSERT INTO countries_by_population (country, population, percent_one_year_chang
 INSERT INTO countries_by_population (country, population, percent_one_year_change, population_change, net_migrants, median_age, percent_aged_over_60, fertility_rate, area_sq_km, density_per_sq_km, urban_pop_percent, urban_pop, percent_of_world_pop) VALUES (
     "Papua New Guinea", 7476108, 2.12, 154846, 0, 21.0, 5, 3.86, 462831, 16, 13, 950364, 0.10);
     
+
     
+/*Shows the most urbanized countries in order of urbanization*/
+SELECT * FROM countries_by_population WHERE urban_pop_percent >= 80 ORDER BY urban_pop_percent;
 
 
-SELECT MAX(population) FROM countries_by_population;
-SELECT MIN(population) FROM countries_by_population;
-    
+
+/*Creates a table and divides countries in 3 categories depending on their demographic change*/    
 SELECT country, 
     CASE
     WHEN median_age<=30 AND fertility_rate>2 THEN "Growing Country"
-    WHEN median_age>=30 AND fertility_rate>2
+    WHEN (median_age>=30 AND fertility_rate>2) OR percent_aged_over_60>= 20
 THEN "Shrinking Country"
+
 ELSE "Others"
 END AS "Population Trend"
 
