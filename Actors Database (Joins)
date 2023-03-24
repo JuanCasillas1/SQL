@@ -1,0 +1,29 @@
+CREATE TABLE actors (id INTEGER PRIMARY KEY,
+    full_name TEXT,
+    country TEXT,
+    age INTEGER,
+    id_SO INTEGER);
+    
+INSERT INTO actors (full_name, country, age, id_SO) VALUES ("Ryan Reynolds", "USA", 46, 2);
+INSERT INTO actors (full_name, country, age, id_SO) VALUES ("Blake Lively", "USA", 35, 1);
+INSERT INTO actors (full_name, country, age, id_SO) VALUES ("Penelope Cruz", "Spain", 48, 6);
+INSERT INTO actors (full_name, country, age, id_SO) VALUES ("John Krasinski", "USA", 43, 5);
+INSERT INTO actors (full_name, country, age, id_SO) VALUES ("Emily Blunt", "UK", 40, 4);
+INSERT INTO actors (full_name, country, age, id_SO) VALUES ("Javier Bardem", "Spain", 54, 3);
+INSERT INTO actors (full_name, country, age, id_SO) VALUES ("Pedro Pascal", "Chile", 57, NULL);
+
+
+CREATE TABLE works (id INTEGER PRIMARY KEY,
+    title TEXT,
+    year_of_release INTEGER,
+    type TEXT,
+    id_actor_involved INTEGER,
+    produced_by TEXT);
+
+INSERT INTO works (title, year_of_release, type, id_actor_involved, produced_by) VALUES ("Deadpool", 2016, "Movie", 1, "FOX");
+INSERT INTO works (title, year_of_release, type, id_actor_involved, produced_by) VALUES ("Vicky Cristina Barcelona", 2008, "Movie",3, "MGM");
+INSERT INTO works (title, year_of_release, type, id_actor_involved, produced_by) VALUES ("Vicky Cristina Barcelona", 2008, "Movie",6, "MGM");
+INSERT INTO works (title, year_of_release, type, id_actor_involved, produced_by) VALUES ("The Last of Us", 2023, "TV Series", 7, "HBO");
+INSERT INTO works (title, year_of_release, type, id_actor_involved, produced_by) VALUES ("A Quiet Place", 2018, "Movie", 4, "Paramount Pictures");
+INSERT INTO works (title, year_of_release, type, id_actor_involved, produced_by) VALUES ("A Quiet Place", 2018, "Movie", 5, "Paramount Pictures");
+INSERT INTO works (title, year_of_release, type, id_actor_involved, produced_by) VALUES ("Gossip Girl", 2007, "TV Series", 2, "Warner Bros");
