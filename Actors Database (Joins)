@@ -1,3 +1,5 @@
+/*Note: for the effects of this database, only couples who date other actors are considered to be taken. Some actors have romantic partners, but since they're not actors they are not considered in the first table*/
+
 CREATE TABLE actors (id INTEGER PRIMARY KEY,
     full_name TEXT,
     country TEXT,
@@ -11,19 +13,69 @@ INSERT INTO actors (full_name, country, age, id_SO) VALUES ("John Krasinski", "U
 INSERT INTO actors (full_name, country, age, id_SO) VALUES ("Emily Blunt", "UK", 40, 4);
 INSERT INTO actors (full_name, country, age, id_SO) VALUES ("Javier Bardem", "Spain", 54, 3);
 INSERT INTO actors (full_name, country, age, id_SO) VALUES ("Pedro Pascal", "Chile", 57, NULL);
+INSERT INTO actors (full_name, country, age, id_SO) VALUES ("Bella Ramsey", "UK", "19", NULL);
+INSERT INTO actors (full_name, country, age, id_SO) VALUES ("Keaneu Reeves", "Canada", 58, NULL);
+INSERT INTO actors (full_name, country, age, id_SO) VALUES ("Emma Watson", "UK", 32, NULL);
+INSERT INTO actors (full_name, country, age, id_SO) VALUES ("Daniel Radcliffe", "UK", 32, 12);
+INSERT INTO actors (full_name, country, age, id_SO) VALUES ("Erin Drake", "USA", 38, 11);
+INSERT INTO actors (full_name, country, age, id_SO) VALUES ("Diego Luna", "Mexico", 43, 15);
+INSERT INTO actors (full_name, country, age, id_SO) VALUES ("Felicity Jones", "UK", 39, NULL);
+INSERT INTO actors (full_name, country, age, id_SO) VALUES ("Camila Sodi", "Mexico", 36, 13);
 
 
 CREATE TABLE works (id INTEGER PRIMARY KEY,
     title TEXT,
     year_of_release INTEGER,
     type TEXT,
-    id_actor_involved INTEGER,
-    produced_by TEXT);
+    id_actor_involved INTEGER);
 
-INSERT INTO works (title, year_of_release, type, id_actor_involved, produced_by) VALUES ("Deadpool", 2016, "Movie", 1, "FOX");
-INSERT INTO works (title, year_of_release, type, id_actor_involved, produced_by) VALUES ("Vicky Cristina Barcelona", 2008, "Movie",3, "MGM");
-INSERT INTO works (title, year_of_release, type, id_actor_involved, produced_by) VALUES ("Vicky Cristina Barcelona", 2008, "Movie",6, "MGM");
-INSERT INTO works (title, year_of_release, type, id_actor_involved, produced_by) VALUES ("The Last of Us", 2023, "TV Series", 7, "HBO");
-INSERT INTO works (title, year_of_release, type, id_actor_involved, produced_by) VALUES ("A Quiet Place", 2018, "Movie", 4, "Paramount Pictures");
-INSERT INTO works (title, year_of_release, type, id_actor_involved, produced_by) VALUES ("A Quiet Place", 2018, "Movie", 5, "Paramount Pictures");
-INSERT INTO works (title, year_of_release, type, id_actor_involved, produced_by) VALUES ("Gossip Girl", 2007, "TV Series", 2, "Warner Bros");
+INSERT INTO works (title, year_of_release, type, id_actor_involved)
+VALUES ("Deadpool", 2016, "Movie", 1);
+INSERT INTO works (title, year_of_release, type, id_actor_involved)
+VALUES ("Vicky Cristina Barcelona", 2008, "Movie",3);
+INSERT INTO works (title, year_of_release, type, id_actor_involved)
+VALUES ("Vicky Cristina Barcelona", 2008, "Movie",6);
+INSERT INTO works (title, year_of_release, type, id_actor_involved)
+VALUES ("The Last of Us", 2023, "TV Series", 7);
+INSERT INTO works (title, year_of_release, type, id_actor_involved)
+VALUES ("A Quiet Place", 2018, "Movie", 4);
+INSERT INTO works (title, year_of_release, type, id_actor_involved)
+VALUES ("A Quiet Place", 2018, "Movie", 5);
+INSERT INTO works (title, year_of_release, type, id_actor_involved)
+VALUES ("Gossip Girl", 2007, "TV Series", 2);
+INSERT INTO works (title, year_of_release, type, id_actor_involved)
+VALUES ("The Last of US", 2023, "TV Series", 8);
+INSERT INTO works (title, year_of_release, type, id_actor_involved)
+VALUES ("John Wick", 2014, "Movie", 9);
+INSERT INTO works (title, year_of_release, type, id_actor_involved)
+VALUES ("Harry Potter", 1998, "Movie", 10);
+INSERT INTO works (title, year_of_release, type, id_actor_involved)
+VALUES ("Harry POtter", 1998, "Movie", 11);
+INSERT INTO works (title, year_of_release, type, id_actor_involved)
+VALUES ("Good Girls Revolt", 2015, "TV Series",12);
+VALUES ("Rogue One", 2016, "Movie", 13);
+INSERT INTO works (title, year_of_release, type, id_actor_involved)
+VALUES ("Rogue One", 2016, "Movie", 14);
+INSERT INTO works (title, year_of_release, type, id_actor_involved)
+VALUES ("Luis Miguel", 2018, "TV Series", 15);
+
+
+/*Which actors worked together in a same project?*/
+SELECT a.full_name, w.title, b.full_name
+FROM actors AS a
+JOIN works As w
+ON a.id = w.id_actor_involved
+JOIN actors AS b
+ON w.id_actor_involved = b.id WHERE b.id!=a.id;
+/*If I don't add the WHERE clause it will only show me the actor paired with themselves and the project they're working on. I'm unsure as to why the WHERE isn't working*/
+
+/*What are each actors couples? Show single actors as well*/
+SELECT a.full_name AS "Actor/Actress", b.full_name AS "Couple"
+FROM actors AS a
+LEFT JOIN actors AS b
+ON a.id = b.id_SO;
+
+/*What actors are not American? Show their country of origin*/
+SELECT a.full_name, a.country
+FROM actors AS a
+WHERE a.country != "USA";
