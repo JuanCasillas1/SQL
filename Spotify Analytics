@@ -26,3 +26,37 @@ duration_ms integer NOT NULL,
 time_signature integer NOT NULL 
 )
 
+/*What are the top 10 most popular artists and their respetcive popularity?*/
+SELECT  artist_name, popularity
+FROM BIT_DB.spotifydata
+ORDER BY popularity desc
+LIMIT 10
+
+
+/*What is the longest song?*/
+SELECT track_name, duration_ms
+FROM Spotifydata
+ORDER BY duration_ms desc LIMIT 1
+/*Can't believe a reggaeton song is the longest one*/
+
+
+/*Tells if a song is danceable or not taking the average danceability as frontier value*/
+SELECT 
+    s.track_name, 
+    s.danceability,
+    frontier,
+    CASE 
+        WHEN s.danceability > frontier THEN 'Go dance'
+        WHEN s.danceability < frontier THEN 'Dont bother'
+        ELSE 'Undecided' 
+    END AS Is_it_danceable
+FROM 
+    Spotifydata AS s
+    JOIN (SELECT AVG(danceability) AS frontier FROM Spotifydata) AS f
+    ON 1=1;
+ /*The last idea of joining the table with itself was provided by ChatGPT. I was stuck as to how to establish a frontier and asked it.*/
+ 
+ 
+ 
+    
+    
