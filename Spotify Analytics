@@ -2,7 +2,7 @@ This project was made in SQLiteStudio
 
 For this project, I downloaded Spotify data from Kaggle
 at https://www.kaggle.com/datasets/equinxx/spotify-top-50-songs-in-2021?resource=download
-and imported the data after creating the table (row 2
+and imported the data after creating the table (row 28)
 
 /*Creating the table*/
 CREATE TABLE BIT_DB.Spotifydata (
@@ -57,6 +57,23 @@ FROM
  /*The last idea of joining the table with itself was provided by ChatGPT. I was stuck as to how to establish a frontier and asked it.*/
  
  
+Demostrations of CTEs aka Temporary Tables
+
+/*Calculates the average popularity for the artists in the Spotify data table.
+Then, for every artist with an average popularity of 90 or above, show their name, 
+their average popularity, and label them as a “Top Star”.*/
+    WITH average_pop AS 
+( SELECT artist_name, AVG(popularity) as average_popularity
+FROM Spotifydata
+GROUP BY artist_name)
+
+SELECT  artist_name,
+        average_popularity,
+        'Top Star' as Type_of_Star
+FROM average_pop
+WHERE average_popularity>=90;
+
+
  
     
     
