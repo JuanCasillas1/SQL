@@ -57,4 +57,30 @@ VALUES
     ('Company KK', 'Healthcare', 150.2, 3400, 0, 16, 8, 5.3);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#1
+--I'm interested in categorizing companies on their maternity leave
+
+SELECT company_name,
+CASE
+	WHEN maternity_leave_weeks >= 12 THEN 'Good'	 
+	WHEN maternity_leave_weeks >= 8 THEN 'Acceptable'
+	ELSE 'Unacceptable'
+END AS Maternity_Leave
+FROM fortune_companies;
+
+#2
+----I'm interested in knowing the average revenue per industry
+
+SELECT industry, ROUND(AVG(revenue),1) AS Average_Revenue
+FROM fortune_companies
+GROUP BY industry;
+
+#3
+--Now I'd like to know which industries average 2 B or more
+
+SELECT industry, ROUND(AVG(revenue),1) as Average_revenue_billions
+FROM fortune_companies
+GROUP BY industry
+HAVING Average_revenue_billions>=200
+;
 
