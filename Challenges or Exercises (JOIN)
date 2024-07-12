@@ -1,3 +1,5 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+HAVING Execercises
 -- Create the 'prescriptions' table
 CREATE TABLE prescriptions (
     person_ID INTEGER,
@@ -71,3 +73,26 @@ VALUES
     (23, 'Zonkify', 85789012),
     (24, 'Teamocil', 42890123),
     (25, 'Glumara', 13901234);
+
+
+
+#1
+--Which medications has Dr. Garcia prescribed?  Your results should include Dr. Garcia's name in one column and the different medication names they've prescribed in the other. 
+
+SELECT 
+meds.medication_name, presc.doctor_name
+FROM medication AS meds
+INNER JOIN prescriptions AS presc
+ON meds.person_ID=presc.person_ID
+WHERE presc.doctor_name = 'Dr. Garcia'
+;
+
+#2
+----Zonkify is no longer on the market. When were all the Zonkify prescriptions last filled? 
+
+SELECT meds.medication_name, presc.date_filled
+FROM medication AS meds
+INNER JOIN prescriptions AS presc
+ON meds.person_ID=presc.person_ID
+WHERE meds.medication_name = "Zonkify";
+
